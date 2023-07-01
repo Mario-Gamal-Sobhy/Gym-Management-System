@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="assets/images/icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .columns {
+            float: left;
+            width: 30%;
+            padding: 8px;
+            margin-top: 250px;
+            margin-left: 50px;
+        }
+
+        .price {
+            list-style-type: none;
+            border: 1px solid #eee;
+            margin: 0;
+            padding: 0;
+            -webkit-transition: 0.5s;
+            transition: 0.5s;
+        }
+
+        .price:hover {
+            box-shadow: 0 16px 24px 0 rgba(193, 19, 37);
+            transform: scale(1.05);
+            transition: 1s;
+        }
+
+
+        .price .header {
+            background-color: #111;
+            color: white;
+            font-size: 25px;
+            -webkit-transition: 0.5s;
+            transition: 0.5s;
+        }
+
+        .price li {
+            border-bottom: 1px solid #eee;
+            padding: 20px;
+            text-align: center;
+            background-color: white;
+        }
+
+        .price .grey {
+            background-color: #eee;
+            font-size: 20px;
+        }
+
+        .button {
+            background-color: #c11325;
+            border: none;
+            color: white;
+            padding: 10px 25px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .columns {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body
+    style="background-image: url(assets/images/background1.jpg); background-color: #404040; background-blend-mode: overlay;">
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="Login.php">Login</a>
+                <a href="index.php" style="margin-left: 450px;">Phive <span>Gym</span></a>
+            </div>
+            <a href="javascript:void(0)" class="ham-burger">
+                <span></span>
+                <span></span>
+            </a>
+            <div class="nav">
+                <ul>
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="index.php#service">Services</a></li>
+                    <li><a href="index.php#schedule">Schedule</a></li>
+                    <li><a href="Trainers.html">Coaches</a></li>
+                    <li><a href="Plans.html">Plans</a></li>
+                    <li><a href="Shop.html">Shop</a></li>
+                    <li><a href="Register.php">Sign up</a></li>
+                    <li><a href="index.php#about">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div class="columns">
+        <ul class="price">
+            <li class="header" style="background-color: #c11325; filter: grayscale(70%);">Basic</li>
+            <li class="grey">$ 9.99 / month</li>
+            <li>24-Hour Access</li>
+            <li>Strength and Cardio Machines</li>
+            <li>Free Personal Training Assessment</li>
+            <li>Locker And Shower Facilites</li>
+            <li class="grey"><a href="#" class="button">Sign Up</a></li>
+        </ul>
+    </div>
+
+    <div class="columns">
+        <ul class="price">
+            <li class="header" style="background-color: #c11325; filter: grayscale(30%)">Pro</li>
+            <li class="grey">$ 24.99 / month</li>
+            <li>Basic plans and more</li>
+            <li>Group Fitness Classes</li>
+            <li>Free Personal Trainer</li>
+            <li>Hydro Massage Beds</li>
+            <li class="grey"><a href="#" class="button">Sign Up</a></li>
+        </ul>
+    </div>
+
+    <div class="columns">
+        <ul class="price">
+            <li class="header" style="background-color: rgb(210, 0, 0); filter: grayscale(0%)">PREMIUM</li>
+            <li class=" grey">$ 49.99 / month</li>
+            <li>Pro plans and more</li>
+            <li>Dry Sauna Access</li>
+            <li>Unlimited Tanning</li>
+            <li>Group Fitness Classes</li>
+            <li class="grey"><a href="#" class="button">Sign Up</a></li>
+        </ul>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $(".ham-burger, .nav ul li a").click(function () {
+
+                $(".nav").toggleClass("open")
+
+                $(".ham-burger").toggleClass("active");
+            })
+            $(".accordian-container").click(function () {
+                $(".accordian-container").children(".body").slideUp();
+                $(".accordian-container").removeClass("active")
+                $(".accordian-container").children(".head").children("span").removeClass("fa-angle-down").addClass("fa-angle-up")
+                $(this).children(".body").slideDown();
+                $(this).addClass("active")
+                $(this).children(".head").children("span").removeClass("fa-angle-up").addClass("fa-angle-down")
+            })
+
+            $(".nav ul li a, .go-down").click(function (event) {
+                if (this.hash !== "") {
+
+                    var hash = this.hash;
+
+                    $('html,body').animate({
+                        scrollTop: $(hash).offset().top
+                    }, 800, function () {
+                        window.location.hash = hash;
+                    });
+
+                    // add active class in navigation
+                    $(".nav ul li a").removeClass("active")
+                    $(this).addClass("active")
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>
